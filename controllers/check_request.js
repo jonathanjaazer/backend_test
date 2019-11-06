@@ -21,6 +21,7 @@ exports.createRequest = (req, res, next) =>{
         vendor_name:  req.body.vendor_name,
         particular:  req.body.particular,
         amount_requested: req.body.amount_requested,
+        po_number: req.body.po_number,
         project_id:  req.body.project_id,
         project_name: req.body.project_name,
         subproject: req.body.subproject,
@@ -51,18 +52,27 @@ exports.getRequest = (req, res, next) => {
 }
 
 exports.updateRequest = (req, res, next) => {
-    const user = new User({
+    const checkRequest = new CheckRequest({
         _id: req.params.id,
-        email: req.body.email,
-        f_name: req.body.f_name,
-        l_name: req.body.l_name,
+        user_id: req.body.user_id,
+        date_needed: req.body.date_needed,
         department_id: req.body.department_id,
-        role_id: req.body.role_id,
-        position: req.body.position,
-        status: "active",
-        date_created: Date.now()
+        department_head: req.body.department_head,
+        department_name:  req.body.department_name,
+        vendor_id:  req.body.vendor_id,
+        vendor_name:  req.body.vendor_name,
+        particular:  req.body.particular,
+        amount_requested: req.body.amount_requested,
+        project_id:  req.body.project_id,
+        project_name: req.body.project_name,
+        subproject: req.body.subproject,
+        project_class: req.body.project_class,
+        taxability_id: req.body.taxability_id,
+        supporting_documents: req.body.supporting_documents,
+        status: req.body.status
     });
-    User.updateOne({_id: req.params.id}, user).then(
+
+    CheckRequest.updateOne({_id: req.params.id}, checkRequest).then(
         () => {
             res.status(201).json({
                 message: "User successfully updated"

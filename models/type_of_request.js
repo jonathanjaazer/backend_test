@@ -14,7 +14,6 @@ const requestSchema = mongoose.Schema({
     vendor_name: {type: String, required: true},
     particular: {type: String, required: true},
     amount_requested: {type: mongoose.Decimal128, required: true},
-    po_number: {type: String},
     project_id: {type: String, required: true},
     project_name: {type: String, required: true},
     subproject: {type: String},
